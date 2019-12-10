@@ -1,24 +1,29 @@
-const router = require('express').Router();
-let Cow = require('../models/cow.model');
+
+const express = require('express')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+
+mongoose.connect('mongodb://localhost/Selectabull', {useNewUrlParser: true})
+
+const app = express()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 
-//route to return all cows
-router.route('/').get((req, res) => {
-    Cow.find()
-    .then(users => res.json(users))
-    .catch(err => res.status(400).json('Error: ' +err));
+router.route('/bulls').get((req, res) => {
+
+});
+
+router.route('/heifers').get((req, res) => {
+
 });
 
 
-//route for adding new cow
-router.route('/add').post((req, res) => {
-    const cowName = req.body.CowName;
 
-    const newCow= new Cow({CowName});
+app.listen(8000, () => {
+  console.log('Node.js listening on port ' + 8000)
+})
 
-    newCow.save()
-        .then(() => res.json('Cow added!'))
-        .catch(err => res.status(400).json('Error: ' +err));
-});
-
-module.exports = router;

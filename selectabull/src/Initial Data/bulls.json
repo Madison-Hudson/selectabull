@@ -1,49 +1,6 @@
-
-    {
-        "Id": "1",
-        "Name": "Max",
-        "Category": "Bull",
-        "milkProduction": "988"
-        }
-    
-        {
-        "Id": "2",
-        "Name": "Cooper",
-        "Category": "Bull",
-        "milkProduction": "970"
-        }
-    
-        {
-        "Id": "3",
-        "Name": "Maxwell",
-        "Category": "Bull",
-        "milkProduction": "760"
-        }
-    
-        {
-        "Id": "4",
-        "Name": "Gus",
-        "Category": "Bull",
-        "milkProduction": "976"
-        }
-        {
-        "Id": "5",
-        "Name": "Paul",
-        "Category": "Bull",
-        "milkProduction": "933"
-        }
-    
-        {
-        "Id": "6",
-        "Name": "Phil",
-        "Category": "Bull",
-        "milkProduction": "1200"
-        }
-    
-    
-        
-    
-    
-       
-    
-    
+{"Id": "b1", "Name": "Buddy", "Category": "Bull", "milkProduction": "988"}
+{"Id": "b2", "Name": "Cooper", "Category": "Bull","milkProduction": "970"}
+{"Id": "b3", "Name": "Maxwell", "Category": "Bull", "milkProduction": "760"}
+{"Id": "b4", "Name": "Gus", "Category": "Bull","milkProduction": "976"}
+{"Id": "b5", "Name": "Paul", "Category": "Bull", "milkProduction": "933"}
+{"Id": "b6", "Name": "Phil", "Category": "Bull", "milkProduction": "1200"}

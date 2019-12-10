@@ -1,48 +1,6 @@
-
-    {
-    "Id": "1",
-    "Name": "Sally",
-    "Category": "Heifer",
-    "milkProduction": "988"
-    }
-
-    {
-    "Id": "2",
-    "Name": "Patches",
-    "Category": "Heifer",
-    "milkProduction": "970"
-    }
-
-    {
-    "Id": "3",
-    "Name": "Maxine",
-    "Category": "Heifer",
-    "milkProduction": "760"
-    }
-
-    {
-    "Id": "4",
-    "Name": "Peach",
-    "Category": "Heifer",
-    "milkProduction": "976"
-    }
-    {
-    "Id": "5",
-    "Name": "Paula",
-    "Category": "Heifer",
-    "milkProduction": "933"
-    }
-
-    {
-    "Id": "6",
-    "Name": "Flower",
-    "Category": "Heifer",
-    "milkProduction": "1200"
-    }
-
-
-    
-
-
-   
-
+{"Id": "h1", "Name": "Sally", "Category": "Heifer", "milkProduction": "988"}
+{"Id": "h2", "Name": "Patches", "Category": "Heifer", "milkProduction": "970"}
+{"Id": "h3", "Name": "Maxine", "Category": "Heifer", "milkProduction": "760"}
+{"Id": "h4", "Name": "Peach", "Category": "Heifer", "milkProduction": "976"}
+{"Id": "h5", "Name": "Paula", "Category": "Heifer", "milkProduction": "933"}
+{"Id": "h6", "Name": "Flower", "Category": "Heifer", "milkProduction": "1200"}
