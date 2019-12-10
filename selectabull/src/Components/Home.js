@@ -16,10 +16,9 @@ const Home = () => {
             <br></br>
 
             <p2>Choose a heifer and a bull to see their potential offspring's traits</p2>
-
             <div class="dropdown">
                 <button class="dropbtn">Hiefers</button>
-                <div class="dropdown-content">
+                <div class="dropdown-heifers">
                     <a href ="h1">Sally</a>
                     <a href="h2">Patches</a>
                     <a href="h3">Maxine</a>
@@ -27,11 +26,9 @@ const Home = () => {
                     <a href="h5">Paula</a>
                     <a href="h6">Flower</a>
                 </div>
-
-
                 <div class="dropdown">
                     <button class="dropbtn">Bulls</button>
-                    <div class="dropdown-content">
+                    <div class="dropdown-bulls">
                         <a href="b1">Buddy</a>
                         <a href="b2">Cooper</a>
                         <a href="b3">Maxwell</a>
@@ -41,10 +38,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
             <button onClick={submitChoice}>Submit</button>
         </header>
-
     )
 };
 export default Home;
