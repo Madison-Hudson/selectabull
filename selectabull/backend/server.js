@@ -33,8 +33,21 @@ app.get('/heifers', (req, res) => {
 
 
 //grab id's of bull and heifer, caluculate average with reliability %
-app.get('/traits', (req, res) => {
-   
+app.get('/calculate', (req, res) => {
+let heifer = await heifer.find
+ 
+
+.then
+
+
+
+if (heifer.milkProduction) > (bull.milkProduction) {
+  (heifer.milkProduction) + 10% && (bull.milkProduction)- 10%
+
+} else {
+  (bull.milkProduction) +10% && (heifer.milkProduction) -10%
+};
+
 }); 
 
 

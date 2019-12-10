@@ -21,6 +21,10 @@ router.route('/heifers').get((req, res) => {
 
 });
 
+router.route('/calculate').get((req, res) => {
+
+});
+
 
 
 app.listen(8000, () => {
