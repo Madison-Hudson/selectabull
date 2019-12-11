@@ -37,12 +37,9 @@ class Results extends Component {
              indexLabel: "{y[#index]}",
              yValueFormatString: "#,##0",
              dataPoints: [
-                //  { label: "Calmness", y: [1450, 3550] },
-                //  { label: "Ease of Calving", y: [550, 3370] },
-                //  { label: "Weight", y: [800, 2750] },
-                //  { label: "Height", y: [500, 3250] },
-                //  { label: "Fat Content of Milk", y: [650, 3300] },
-                //  { label: "Protein Content of Milk", y: [550, 2100] },
+       
+                 { label: "Weight", y: [800, 2750] },
+                 { label: "Height", y: [500, 3250] },
                  { label: "Milk Production (in Gallons/year)", y: milkData}
              ]
          }]

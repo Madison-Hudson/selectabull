@@ -4,36 +4,41 @@ import axios from 'axios';
 
 
 class Dropdown extends Component {
-    constructor () {
-      super() 
+    constructor (props) {
+      super(props) 
   
-    //   this.state = ({
-    //     [bullId: '',
-    //     [heiferId]: ''
-    //   });
+      this.state = {
+        bullId: '',
+        heiferId: ''
+      };
 
-    //   this.handleSubmitChange = this.handleInputChange.bind(this);
-      
-    // }
+      this.handleInputChange = this.handleInputChange.bind(this); 
+     }
 
-    //   handleSubmit(event) {
-    //     const target = event.target;
-    //     const value = target.value;
-    //    console.log(target.value)
 
-      //   this.setState({
-      //     [name]: value
-      //   });
+      handleInputChange(event) {
+        const target = event.target;
+        const value = target.value;
+        target.clicked = target.value;
+        const name = target.name;
+        console.log(target.name)
+;
+        this.setState({
+          [name]: value
+        });
+        console.log(this.state);
+      }
        
       
-   const handleChange = (event) => {
+   handleChange = (event) => {
     var bull = event.target.value
     var heifer = event.target.value
     console.log(heifer)
     console.log(bull)
     };
-   
-     
+
+// this.state.bullId(submit)
+ 
 
 render() {
     return (
@@ -42,36 +47,30 @@ render() {
 
       <h3>Choose a heifer and a bull to see their offspring's range of traits</h3>
       <form>
-        <div className="form-bulls">
-        <label>Bulls</label>
+        <label>Bulls
+          <select
+          name={"bullId"}
+          value ={this.state.bullId} 
+          onChange= {this.handleInputChange}> 
           
-           
-            {/* // value={this.state.bull.Id}
-            onChange={this.handleInputChange} /> */}
-          
-          {/* <select value ={this.handleSubmit} onChange= {this.handleChange}> */}
-          <select>
             <option value="5defc2b5b9283d6de054e0f0">Buddy</option>
             <option value="5defc2b5b9283d6de054e0f1">Cooper</option>
             <option value="5defc2b5b9283d6de054e0f2">Maxwell</option>
             <option value="5defc2b5b9283d6de054e0f3">Gus</option>
             <option value="5defc2b5b9283d6de054e0f4">Paul</option>
             <option value="5defc2b5b9283d6de054e0f5">Phil</option>
-          </select>
-        </div>
-          
+            </select>
+          </label>
         
+        <br />
 
-        <br/>
+       
+        <label>Heifers
+          <select
+            name={"heiferId"}
+            value={this.state.heiferId}
+            onChange= {this.handleInputChange}>
 
-        <div className="form-heifers"> 
-        <label>Heifers</label>
-         
-               {/* // value={this.state.bull.Id}
-            onChange={this.handleInputChange} /> */}
-
-          {/* <select value ={this.handleSubmit} onChange= {this.handleChange}> */}
-          <select>
             <option value="5defc49cb9283d6de054e0f6">Sally</option>
             <option value="5defc49cb9283d6de054e0f7">Patches</option>
             <option value="5defc49cb9283d6de054e0f8">Maxine</option>
@@ -79,12 +78,8 @@ render() {
             <option value="5defc49cb9283d6de054e0fa">Paula</option>
             <option value="5defc49cb9283d6de054e0fb">Flower</option>
           </select>
-          </div>
-        
-        
-        
-
-      </form>
+          </label>
+       </form>
       <button onClick={this.handleChange}>submit</button>
     </div>
     )}
