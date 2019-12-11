@@ -3,52 +3,51 @@ import React, { Component} from 'react';
 import axios from 'axios';
 
 
-
-//I want centralized piece to handle state changes=
-//bull and heifer choice
-
-export default class Home extends Component {
-    constructor(props) {
-        super(props);
-
-    // this.onChangeId = this.onChangeId.bind(this);
-   
-            this.state = {
-            heifers: [],
-            bulls: []
-        }
+class Home extends Component {
+    constructor () {
+      super()
+  
+      this.state = {
+        bull: '',
+        heifer: ''
+      }
+  
+      this.handleClick = this.handleClick.bind(this);
     }
 
-
-//this loads by default before others
-componentDidMount () {
-    this.setState({
-        Id:"test cow",
-        
-
+//populate bulls dropdown from backend
+componentDidMount() {
+    axios.get('http://localhost:8000/bulls')
+    .then(response => {
+        this.setState({bulls: response.data.Name})
+    console.log({bulls: response.data.Name})
     })
-};
+    .catch((error) =>{
+        console.log(error)
+    })
+}
 
-//grabbing value from choice of bull and heifer name and changing state
-onchangeId(e) {
-    this.setState({
-        Id: e.target.value
-    });
+//populate heifers dropdown from backend
+componentDidMount() {
+    axios.get('http://localhost:8000/heifers')
+    .then(response => {
+        this.setState({heifers: response.data.Name})
+        console.log({heifers: response.data.Name})
+    })
+    .catch((error) =>{
+        console.log(error)
+    })
 }
 
 
-onsubmit = (e) => {
-//  e.preventDefault();
-//  const pairing = {
-//      bull. this.state.bull,
- }
 
- 
-//   console.log(bull);
-//  axios.post('http://localhost:8000/calculate', bull)
-//  .then(res => console.log(res.data));
- 
-
+handleClick () {
+    const pairing = {
+        bull: this.state.bull,
+        heifer: this.state.heifer
+    }
+    this.props.addPairing(pairing);
+}
 
 render() {
     return (
@@ -56,10 +55,15 @@ render() {
     <img src="https://4al52k24l8r51wpym5i46ltd-wpengine.netdna-ssl.com/wp-content/uploads/sites/2/2019/06/cowsa-1480x833.jpg" className="App-logo" alt="logo" />
 
       <h3>Choose a heifer and a bull to see their offspring's range of traits</h3>
-      <form onSubmit={this.onSubmit}>
+      <form>
 
         <div className="form-group"> 
-          <label>Bulls </label>
+          <input
+          className= 'form-control'
+          label= "Bulls"
+          value={this.state.bulls}
+          onChange={event => this.setState({user: event.target.value})}
+          
           <select>
             <option Id ="b1">Buddy</option>
             <option Id="b2">Cooper</option>
@@ -68,10 +72,17 @@ render() {
             <option Id="b5">Paul</option>
             <option Id="b6">Phil</option>
           </select>
+          />
         </div>
 
+        <br/>
+
         <div className="form-group"> 
-          <label>Heifers</label>
+          <input
+          className= 'form-control'
+          label= "Heifers"
+          value={this.state.heifers}
+          onChange={event => this.setState({user: event.target.value})}
           <select>
                 <option Id="h1">Sally</option>
                 <option Id="h2">Patches</option>
@@ -85,15 +96,16 @@ render() {
 
 
         <div className="form-group">
-          <input type="submit" value="Submit" className="button" />
+          <input type="button" value="Submit" onClick={this.handleClick} />
+        {/* on submit, change the state to the chosen pairing */}
         </div>
       </form>
     </div>
     )
   }
-}
 
 
+export default Home;
 
 
 // import React from 'react';
