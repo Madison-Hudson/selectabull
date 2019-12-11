@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #282c34;
+  
 }
 
 .App-logo {
@@ -21,8 +23,16 @@
   color: #09d3ac;
 }
 
+h3 {
+  color: white;
+}
 
-.dropbtn {
+label {
+  color:white;
+}
+
+
+/* .dropbtn {
   background-color: grey;
   color: white;
   padding: 16px;
@@ -75,4 +85,4 @@
 .dropdown:hover .dropdown-heifers {display: block;}
 .dropdown:hover .dropdown-bulls {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;} */
