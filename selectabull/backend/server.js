@@ -25,23 +25,12 @@ app.get('/bulls', (req, res) => {
   })
 }); 
 
-// app.get('/bulls/:id', function(req, res, next) {
-//   Bull.findOne({_id: req.params.id}).then(function(bull){
-//     console.log(bull.milkProduction)
-//     res.send(JSON.stringify(production));
-//   })
-// });
-
 app.get('/bulls/:id', function(req, res, next) {
   Bull.findOne({_id: req.params.id}).then(function(bull){
     console.log(bull.milkProduction)
     res.send(JSON.stringify(production));
-  },
-  Hiefer.findOne({_id: req.params.id}).then(function(heifer){
-    console.log(heifer.milkProduction)
-    res.send(JSON.stringify(production));
-  }))
-};
+  })
+});
 
 //returns all heifers
 app.get('/heifers', (req, res) => {
@@ -58,27 +47,37 @@ Heifer.findOne({_id: req.params.id}).then(function(heifer){
 
 
 //grab id's of bull and heifer, caluculate average with reliability %
-app.get('/calculate', (req, res) => {
-// Heifer=await heifer.find
-//(one request from front end sends two id's on click submit, then calculate)
+app.get('/traits/:bullId/:heiferId', (req, res) => {
+  Heifer.findOne({_id: req.params.heiferId}).then(function(heifer){
+    Bull.findOne({_id: req.params.bullId}).then(function(bull){
+      console.log(bull);
+      console.log(heifer);
 
+      let heiferMilkProduction = heifer.milkProduction;
+      let bullMilkProduction = bull.milkProduction;
+
+      if (heiferMilkProduction > bullMilkProduction) {
+        heiferMilkProduction += heiferMilkProduction * .1  
+        bullMilkProduction -= bullMilkProduction * .1
+      
+      } else {
+        bullMilkProduction += bullMilkProduction * .1 
+        heiferMilkProduction -= heiferMilkProduction * .1
+      };
+
+      const calfTraits = {
+        bullMilkProduction,
+        heiferMilkProduction
+      }
+
+      res.send(calfTraits);
+    })
+  })
 });
 
 
-// db.eval(function() { 
-//   db.collection.find({tag : ""}).forEach(function(e) {
-//       e.milkProduction += e.milkProduction * 0.1;
-//       db.collection.save(e);
-//   });
 
-// if (heifer.milkProduction) > (bull.milkProduction) {
-//   (heifer.milkProduction) ++ (heifer.milkProduction *.1) && (bull.milkProduction) -- (bull.milkProduction *.1)
 
-// } else {
-//   (bull.milkProduction) ++ (bull.milkProduction *.1) && (heifer.milkProduction) --(bull.milkProduction *.1)
-// };
-
-// }); 
 
 
 

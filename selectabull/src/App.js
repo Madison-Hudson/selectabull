@@ -1,8 +1,9 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import React from 'react';
-import Home from './Components/Home';
-import Results from './Components/Results';
+
+import React, { Component } from 'react';
 import './App.css';
+import Results from './Components/Results';
+import Dropdown from './Components/Dropdown';
+const axios = require('axios');
 
 
 class App extends Component {
@@ -10,90 +11,51 @@ class App extends Component {
     super()
 
     this.state = {
-      pairing: [
-       { Heifer: ''},
-       { Bull: ''}
-       ],
-      
-     }
-
-    this.addPairing = this.addPairing.bind(this);
-    
-  }
-
-
-  addPairing (post) {
-    this.setState({ posts: this.state.posts.concat([post]) });
-  }
-
-//send axios request with pairing state to calculate route
-  axios.post('http://localhost:8000/calculate', {
-    
-  }
-
-      if (p.text === post.text) {
-        return Object.assign(post, p, {upvotes})
-      } else {
-        return p;
+      pairing: {
+        heiferId: null,
+        bullId: null
+      },
+      traits: {
+        heiferMilkProduction: 0,
+        bullMilkProduction: 0
       }
-    });
+    } 
 
-    this.setState({ posts: postsWithUpvotes })
+    this.handleClick = this.handleClick.bind(this);
+    this.fetchTraits = this.fetchTraits.bind(this);
   }
 
   handleClick () {
-    this.setState({ showPosts: !this.state.showPosts });
+    this.fetchTraits();
+  }
+
+  fetchTraits() {
+    const url = 'http://localhost:8000/traits/5defc2b5b9283d6de054e0f0/5defc49cb9283d6de054e0f6';
+
+    axios
+      .get(url)
+      .then(response => {
+        this.setState({traits: response.data})
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   render() {
-    const showPosts = () => {
-      if (this.state.showPosts) {
-        return <PostsList upvotePost={this.upvotePost} posts={this.state.posts} />
-      }
-    }
-
-    const renderText = () => {
-      if (this.state.showPosts) {
-        return 'Hide Posts';
-      } else {
-        return 'Show Posts'
-      }
-    }
-
-
     return (
-//       
-          component={Home}
-//         
-//       
-    );
+      <div>
+        <h1>hello world</h1>
+
+        <Dropdown />
+        {/* <button onClick={this.handleClick}>submit</button> */}
+        <Results traits={this.state.traits}/>
+        
+      </div>
+    )
   }
+  
 }
 
+
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <div className="App">
-//         <Switch>
-//           <Route exact path="/" component={Home} />
-//           <Route path="/results" component={Results} />
-//         </Switch>
-//       </div>
-//   </BrowserRouter>
-//   );
-// }
-// export default App;
